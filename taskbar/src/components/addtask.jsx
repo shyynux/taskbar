@@ -15,13 +15,8 @@ const taskID = 1;
 const AddTask = ({task}) => {
 
     const addtoLocal = () => {
-        localStorage.setItem(taskID, task);
-        console.log("taskId and task", taskID);
-        console.log(task);
         console.log("i was clicked");
-        const testvar = localStorage.getItem(taskID);
-        var lem = testvar.valueOf;
-        console.log(lem);
+        localStorage.setItem(taskID, JSON.stringify(task));
     }
     return(
         <div>

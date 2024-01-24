@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css'; 
+import AddTask from './addtask';
 
 const TaskTable = () => {
   const [filter, setFilter] = useState('all'); // 'all', 'upcoming', 'overdue', 'completed'
@@ -30,6 +31,12 @@ const TaskTable = () => {
       completed: true,
     },
   ];
+
+        const taskID = tasks[0].id;
+
+        const storedTasks = JSON.parse(localStorage.getItem(taskID));
+        const firstTask = storedTasks;
+        console.log(firstTask.title);
   
 
   const filteredTasks = () => {
@@ -83,20 +90,22 @@ const TaskTable = () => {
           <div className="flex-1 p-2 border border-black">Description</div>
           <div className="flex-1 p-2 border border-black">Due Date</div>
           <div className="flex-1 p-2 border border-black">Priority</div>
-          <div className="flex-1 p-2">add</div>
+          <div className="flex-1 p-2"><AddTask task={tasks[0]}/></div>
         </div>
+
+        {}
 
         {filteredTasks().map(task => (
           <div key={task.id} className="flex bg-white-100 text-black 
           rounded-md border border-dashed text-center shadow-md font-mono ">
             <div className="flex-1 p-2 border-dashed border-2 
-            hover:border-black hover:border-solid hover:bg-cyan-50">{task.title}</div>
+            hover:border-black hover:border-solid hover:bg-cyan-50">{firstTask.title}</div>
             <div className="flex-1 p-2 border-dashed border-2 
-            hover:border-black hover:border-solid hover:bg-cyan-50">{task.description}</div>
+            hover:border-black hover:border-solid hover:bg-cyan-50">{firstTask.description}</div>
             <div className="flex-1 p-2 border-dashed border-2 
-            hover:border-black hover:border-solid hover:bg-cyan-50">{task.dueDate}</div>
+            hover:border-black hover:border-solid hover:bg-cyan-50">{firstTask.dueDate}</div>
             <div className="flex-1 p-2 border-dashed border-2 
-            hover:border-black hover:border-solid hover:bg-cyan-50">{task.priority}</div>
+            hover:border-black hover:border-solid hover:bg-cyan-50">{firstTask.priority}</div>
             <div className="flex-1 p-2 hover:bg-cyan-50">Edit / delete</div>
           </div>
         ))}
@@ -106,3 +115,4 @@ const TaskTable = () => {
 };
 
 export default TaskTable;
+
