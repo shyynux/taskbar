@@ -67,6 +67,12 @@ const TaskTable = () => {
     setShowEditForm(false);
   };
 
+  const deleteLocalTask = (taskID) => {
+    console.log("i was deleted, oh no");
+    localStorage.removeItem(taskID);
+    console.log("you deleted this -> ", localStorage.getItem(taskID));
+}
+
   const filteredTasks = () => {
     switch (filter) {
         case 'upcoming':
@@ -146,8 +152,12 @@ const TaskTable = () => {
             <button onClick={() => toggleEditForm(task)} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
             Edit
           </button>
-                  <DeleteTask taskID={task.id} />
-                  {showEditForm && selectedTask && <EditTaskForm task={selectedTask} onEditTask={handleEditTask} onClose={() => setShowEditForm(false)} />}
+          <button className="bg-cyan-200 border-2 border-slate-800 
+            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
+            hover:shadow-xl" onClick={() => deleteLocalTask(task.id)}>
+                Delete
+            </button>
+         {showEditForm && selectedTask && <EditTaskForm task={selectedTask} onEditTask={handleEditTask} onClose={() => setShowEditForm(false)} />}
               </div>
             </div>
         ))}      
