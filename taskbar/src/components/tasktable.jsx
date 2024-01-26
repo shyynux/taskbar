@@ -3,6 +3,7 @@ import "../App.css";
 import AddTaskForm from "./addtaskform";
 import EditTaskForm from "./edittaskform";
 import DeleteTask from "./deletetask";
+import SearchBar from "./searchbar";
 
 const status = ["UPCOMING", "COMPLETED", "OVERDUE", "ALL"];
 
@@ -21,7 +22,6 @@ const populateStatus = (newTask) => {
 };
 
 const populateTasks = () => {
-  const storedLocalKeys = Object.keys(localStorage);
   const storedLocalValues = Object.values(localStorage);
 
   return storedLocalValues.map((it) => {
@@ -140,6 +140,7 @@ const TaskTable = () => {
 
   return (
     <div className="container mx-auto mt-8">
+      <SearchBar tasksObject={tasksObject} />
       <div className="flex items-center mb-4">
         <button
           onClick={() => filterTasks(status[3])}
