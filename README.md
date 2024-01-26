@@ -39,4 +39,4 @@ To run TaskBar locally, follow these steps:
 
 4. **Access the App**
    ```bash
-   Open your browser and navigate to http://localhost:3000.
+   Open your browser and navigate to http://localhost:5173.
