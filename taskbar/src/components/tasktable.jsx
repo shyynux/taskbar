@@ -88,7 +88,6 @@ const TaskTable = () => {
 
     // Close the form
     setShowEditForm(false);
-
 	filterTasks(filter);
   };
 
@@ -142,67 +141,39 @@ const TaskTable = () => {
     <div className="container mx-auto mt-8">
       <SearchBar tasksObject={tasksObject} />
       <div className="flex items-center mb-4">
-        <button
-          onClick={() => filterTasks(status[3])}
-          className="bg-cyan-200 
-            border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-        >
-          All Tasks
-        </button>
-        <button
-          onClick={() => filterTasks(status[0])}
-          className="bg-cyan-200 
-            border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-        >
-          Upcoming Tasks
-        </button>
-        <button
-          onClick={() => filterTasks(status[2])}
-          className="bg-cyan-200 
-            border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-        >
-          Overdue Tasks
-        </button>
-        <button
-          onClick={() => filterTasks(status[1])}
-          className="bg-cyan-200 
-            border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-        >
-          Completed Tasks
-        </button>
-      </div>
+  <div
+    onClick={() => filterTasks(status[3])}
+    className="flex-1 text-center py-2 bg-cyan-200 border-2 border-slate-800 rounded-tl-lg rounded-bl-lg shadow-md hover:bg-cyan-500 hover:text-white cursor-pointer"
+  >
+    All Tasks
+  </div>
+  <div
+    onClick={() => filterTasks(status[0])}
+    className="flex-1 text-center py-2 bg-cyan-200 border-2 border-slate-800 shadow-md hover:bg-cyan-500 hover:text-white cursor-pointer"
+  >
+    Upcoming Tasks
+  </div>
+  <div
+    onClick={() => filterTasks(status[2])}
+    className="flex-1 text-center py-2 bg-cyan-200 border-2 border-slate-800 shadow-md hover:bg-cyan-500 hover:text-white cursor-pointer"
+  >
+    Overdue Tasks
+  </div>
+  <div
+    onClick={() => filterTasks(status[1])}
+    className="flex-1 text-center py-2 bg-cyan-200 border-2 border-slate-800 rounded-tr-lg rounded-br-lg shadow-md hover:bg-cyan-500 hover:text-white cursor-pointer"
+  >
+    Completed Tasks
+  </div>
+</div>
 
       <div className="flex flex-col font-mono">
-        <div className="flex text-black rounded-md border border-black text-center">
-          <div className="flex-1 p-2 bg-cyan-100 border border-black">
-            Title
-          </div>
-          <div className="flex-1 p-2 bg-cyan-100 border border-black">
-            Description
-          </div>
-          <div className="flex-1 p-2 bg-cyan-100 border border-black">
-            Due Date
-          </div>
-          <div className="flex-1 p-2 bg-cyan-100 border border-black">
-            Priority
-          </div>
-          <div className="flex-1 p-2 bg-cyan-100 border border-black">
-            Status
-          </div>
+        <div className="flex text-black rounded-md w-1/3">
           <div className="flex-1 p-2">
             <button
-              className="bg-cyan-200 border-solid shadow-md p-2 rounded 
-          hover:bg-cyan-500 hover:text-white"
-              onClick={toggleAddForm}
-            >
+              className="bg-cyan-200 border-2 border-solid border-black shadow-md p-2 rounded 
+          hover:bg-cyan-500 hover:text-white shadow-xl"
+              onClick={toggleAddForm}>
               Add Task
             </button>
             {showAddForm && (
@@ -239,89 +210,71 @@ const TaskGrid = ({
   setShowEditForm,
 }) => {
   return (
-    <div>
-      {tasksObject.map((task) => (
-        <div
-          key={task.id}
-          className="flex bg-white-100 text-black 
-            rounded-md border border-dashed text-center shadow-md font-mono "
-        >
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            {task.title}
-          </div>
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            {task.description}
-          </div>
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            {task.dueDate}
-          </div>
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            {task.priority}
-          </div>
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            {task.status}
-          </div>
-          <div
-            className="flex-1 p-2 border-dashed border-2 
-              hover:border-black hover:border-solid hover:bg-cyan-50"
-          >
-            <button
-              className="border-black border-2 bg-cyan-100 p-1
-              hover:bg-cyan-300"
-              onClick={() => updateStatus(task)}
-            >
-              {task.status === status[1] ? (
-                <p> HO GAYA </p>
-              ) : (
-                <p> Mark as Completed </p>
-              )}
-            </button>
-          </div>
+	<table className="w-full table-auto border-2 m-2 border-black shadow-xl">
+	<thead>
+	  <tr className="bg-cyan-200 text-black border-2 border-black">
+		<th className="p-2 border-2 border-black">Title</th>
+		<th className="p-2 border-2 border-black">Description</th>
+		<th className="p-2 border-2 border-black">Due Date</th>
+		<th className="p-2 border-2 border-black">Priority</th>
+		<th className="p-2 border-2 border-black">Status</th>
+		<th className="p-2 border-2 border-black">Update Status</th>
+		<th className="p-2">Actions</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {tasksObject.map((task) => (
+		<tr key={task.id} className="bg-white-100 text-black rounded-md border border-dashed shadow-md font-mono">
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			{task.title}
+		  </td>
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			{task.description}
+		  </td>
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			{task.dueDate}
+		  </td>
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			{task.priority}
+		  </td>
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			{task.status}
+		  </td>
+		  <td className="p-2 border-dashed border-2 hover:border-black hover:border-solid hover:bg-cyan-50">
+			<button
+			  className="border-black border-2 bg-cyan-100 p-1 hover:bg-cyan-300"
+			  onClick={() => updateStatus(task)}
+			>
+			  {task.status === status[1] ? <p> Mark as Incomplete </p> : <p> Mark as Completed </p>}
+			</button>
+		  </td>
+		  <td className="p-2 hover:bg-cyan-50">
+			<button
+			  onClick={() => toggleEditForm(task)}
+			  className="bg-cyan-200 border-2 border-slate-800 rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white hover:shadow-xl"
+			>
+			  Edit
+			</button>
+			<button
+			  className="bg-cyan-200 border-2 border-slate-800 rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white hover:shadow-xl"
+			  onClick={() => deleteLocalTask(task.id)}
+			>
+			  Delete
+			</button>
+			{showEditForm && selectedTask && (
+			  <EditTaskForm
+				task={selectedTask}
+				onEditTask={handleEditTask}
+				onClose={() => setShowEditForm(false)}
+			  />
+			)}
+		  </td>
+		</tr>
+	  ))}
+	</tbody>
+  </table>
+  
 
-          <div className="flex-1 p-2 hover:bg-cyan-50">
-            <button
-              onClick={() => toggleEditForm(task)}
-              className="bg-cyan-200 
-            border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-            >
-              Edit
-            </button>
-            <button
-              className="bg-cyan-200 border-2 border-slate-800 
-            rounded-lg shadow-md p-1 hover:bg-cyan-500 hover:text-white
-            hover:shadow-xl"
-              onClick={() => deleteLocalTask(task.id)}
-            >
-              Delete
-            </button>
-            {showEditForm && selectedTask && (
-              <EditTaskForm
-                task={selectedTask}
-                onEditTask={handleEditTask}
-                onClose={() => setShowEditForm(false)}
-              />
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
   );
 };
 

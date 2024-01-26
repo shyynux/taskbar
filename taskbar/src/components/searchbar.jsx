@@ -28,8 +28,6 @@ const SearchBar = ({tasksObject}) => {
         { id: 3, task: "Task 3", priority: "low", completed: false },
       ];
 
-    // setSearchResults(result);
-
     let filteredResults = result;
     console.log("filterPriority is", filterPriority);
     
@@ -61,23 +59,25 @@ const SearchBar = ({tasksObject}) => {
         type="text"
         id="searchInput"
         placeholder="Enter your search"
-        className='p-2 m-2 border-2 border-black hover:shadow-xl'
+        className='p-2 m-2 border-2 border-black hover:shadow-xl rounded-md'
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button onClick={performSearch}>Search</button>
+      <button onClick={performSearch} className="bg-cyan-200 border-2 border-slate-800 rounded-lg shadow-md p-2 
+      hover:bg-cyan-500 hover:text-white hover:shadow-xl"
+	   >Search</button>
 
       {/* Filter Dropdowns */}
-      <label>Priority:</label>
-      <select value={filterPriority} onChange={(e) => setFilterPriority(e.target.value)}>
+      <label className='p-2'>Priority:</label>
+      <select className='p-2 bg-cyan-50 border-2 border-black rounded-md hover:shadow-xl' value={filterPriority} onChange={(e) => setFilterPriority(e.target.value)}>
         <option value="All">All</option>
         <option value="high">high</option>
         <option value="medium">medium</option>
         <option value="low">low</option>
       </select>
 
-      <label>Completion Status:</label>
-      <select value={filterCompleted} onChange={(e) => setFilterCompleted(e.target.value)}>
+      <label className='p-2'>Completion Status:</label>
+      <select  className='p-2 bg-cyan-50 border-2 border-black rounded-md hover:shadow-xl' value={filterCompleted} onChange={(e) => setFilterCompleted(e.target.value)}>
         <option value="All">All</option>
         <option value="Completed">Completed</option>
         <option value="Incomplete">Incomplete</option>
