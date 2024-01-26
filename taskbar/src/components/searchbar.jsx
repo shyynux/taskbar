@@ -14,23 +14,13 @@ const SearchBar = ({tasksObject}) => {
   const performSearch = () => {
 
     const result = [];
-    console.log("tasksObject", tasksObject);
 
     /* run the query on complete data */
     tasksObject.map(task => {
         (task.title.includes(searchQuery) || task.description.includes(searchQuery)) ? result.push(task) : task
     });
-    console.log("result is ", result);
-
-    const mockSearchResults = [
-        { id: 1, task: "Task 1", priority: "high", completed: false },
-        { id: 2, task: "Task 2", priority: "Medium", completed: true },
-        { id: 3, task: "Task 3", priority: "low", completed: false },
-      ];
-
     let filteredResults = result;
-    console.log("filterPriority is", filterPriority);
-    
+
     if (filterPriority !== 'All') {
       filteredResults = filteredResults.filter(result => result.priority == filterPriority);
     }
@@ -43,11 +33,7 @@ const SearchBar = ({tasksObject}) => {
         filteredResults = filteredResults.filter(result => result.status !== "COMPLETED");
     }
 
-    console.log("filteredResults is ", filteredResults);
-
-    // Update state with filtered search results
     setSearchResults(filteredResults);
-    // Show the results popup
     setShowResults(true);
     setSearchQuery('');
   };

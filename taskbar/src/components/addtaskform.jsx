@@ -7,30 +7,24 @@ const AddTaskForm = ({ onAddTask, onClose }) => {
   const [dueDate, setDueDate] = useState('');
 
   const handleSave = () => {
-    // Validate and save the task
     if (title.trim() === '' || description.trim() === '' || dueDate.trim() === '') {
       alert('Please fill in all fields');
       return;
     }
 
     const newTask = {
-      id: Date.now(), // Use a unique identifier, for example, timestamp
+      id: Date.now(),
       title,
       description,
       priority,
       dueDate,
     };
 
-    // Pass the new task to the parent component for handling
     onAddTask(newTask);
-
-    // Reset form fields
     setTitle('');
     setDescription('');
     setPriority('low');
     setDueDate('');
-
-    // Close the form
     onClose();
   };
 

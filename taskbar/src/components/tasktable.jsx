@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import AddTaskForm from "./addtaskform";
 import EditTaskForm from "./edittaskform";
-import DeleteTask from "./deletetask";
 import SearchBar from "./searchbar";
 
 const status = ["UPCOMING", "COMPLETED", "OVERDUE", "ALL"];
@@ -53,14 +52,9 @@ const TaskTable = () => {
   console.log("taskObje", tasksObject);
 
   const handleAddTask = (newTask) => {
-    // Add the new task to localStorage
     populateStatus(newTask);
-
     localStorage.setItem(newTask.id, JSON.stringify(newTask));
-
-    // Update tasksObject state
     setTasksObject((prevTasks) => [...prevTasks, newTask]);
-
 	filterTasks(filter);
   };
 
@@ -86,7 +80,6 @@ const TaskTable = () => {
       )
     );
 
-    // Close the form
     setShowEditForm(false);
 	filterTasks(filter);
   };
@@ -99,7 +92,6 @@ const TaskTable = () => {
 
   const updateStatus = (task) => {
     var taskStatus = task.status;
-    console.log("i was clicked");
     console.log(task);
     console.log(taskStatus);
     if (taskStatus == status[1]) {
@@ -131,7 +123,6 @@ const TaskTable = () => {
         setTasksObject(allTasks.filter((task) => task.status === status[1]));
         break;
       default:
-        console.log("default");
         setTasksObject(allTasks);
         break;
     }
